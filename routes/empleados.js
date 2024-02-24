@@ -55,4 +55,19 @@ router.get('/delete/:id', (req, res) => {
   db.close();
 });
 
+
+// Ruta para editar un empleado
+router.get('/edit/:id', (req, res) => {
+  const db = new sqlite3.Database(dbPath);
+  const sql = "SELECT * FROM empleados WHERE id = ?";
+  db.get(sql, [req.params.id], (err, row) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    res.render('empleados', { empleados: [], empleadoSeleccionado: row || {} });
+  });
+  db.close();
+});
+
+
 module.exports = router;

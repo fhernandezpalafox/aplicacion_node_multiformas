@@ -15,7 +15,7 @@ app.set('views', './views');
 const empleadosRoutes = require('./routes/empleados');
 app.use('/empleados', empleadosRoutes);
 
-app.get('/', (req, res) => {
+app.get('/', (req, res) => { //request, response
   res.redirect('/empleados');
 });
 

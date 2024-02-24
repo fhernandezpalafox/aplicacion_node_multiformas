@@ -1,5 +1,7 @@
 window.addEventListener('load', () => {
+
     function updateOnlineStatus(event) {
+
         if (navigator.onLine) {
             toastr.success('Estás en línea.');
         } else {
