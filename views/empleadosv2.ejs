@@ -3,58 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Empleados</title>
-    <style>
-        /* Estilos básicos para la tabla y el formulario */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-        form {
-            margin-bottom: 20px;
-        }
-    </style>
-    <!-- Librería toast-->
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Toastr CSS -->
     <link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Gestión de Empleados</h1>
-    <form id="formularioEmpleado">
-        <input type="hidden" name="id" id="id">
-        <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" id="nombre" required>
-        <label for="puesto">Puesto:</label>
-        <input type="text" name="puesto" id="puesto" required>
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required>
-        <button type="submit">Guardar</button>
-    </form>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Puesto</th>
-                <th>Email</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Los empleados se cargarán aquí mediante AJAX -->
-        </tbody>
-    </table>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <div class="container mx-auto mt-8">
+        <h1 class="text-2xl font-bold mb-4">Gestión de Empleados</h1>
+        <form id="formularioEmpleado" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <input type="hidden" name="id" id="id">
+            <div class="mb-4">
+                <label for="nombre" 
+                class="block text-gray-700 text-sm font-bold mb-2">Nombre:</label>
+                <input type="text" name="nombre" id="nombre" required 
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label for="puesto" class="block text-gray-700 text-sm font-bold mb-2">Puesto:</label>
+                <input type="text" name="puesto" id="puesto" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+                <input type="email" name="email" id="email" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Guardar</button>
+        </form>
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <table class="table-auto w-full mb-6">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-2 text-left text-gray-800">ID</th>
+                        <th class="px-4 py-2 text-left text-gray-800">Nombre</th>
+                        <th class="px-4 py-2 text-left text-gray-800">Puesto</th>
+                        <th class="px-4 py-2 text-left text-gray-800">Email</th>
+                        <th class="px-4 py-2 text-left text-gray-800">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                    <!-- Los empleados se cargarán aquí mediante AJAX -->
+                </tbody>
+            </table>
+        </div>
+    </div>
 
+    <!-- jQuery and Toastr JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Librería toast-->
     <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.js"></script>
     <!-- Logica de código JavaScript/AJAX -->
-    <script src="/js/app.js"></script>
-    <script src="/js/appv2.js"></script>
+    <script src="/js/app.js?v=1"></script>
+    <script src="/js/appv2.js?v=1"></script>
 </body>
 </html>

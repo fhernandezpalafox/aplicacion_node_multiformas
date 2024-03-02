@@ -56,4 +56,20 @@ router.delete('/api/delete/:id', (req, res) => {
   db.close();
 });
 
+
+router.get('/api/:id', (req, res) => {
+  const db = new sqlite3.Database(dbPath);
+  const sql = "SELECT * FROM empleados WHERE id = ?";
+  db.get(sql, [req.params.id], (err, row) => {
+      if (err) {
+          res.status(500).json({ error: err.message });
+      } else {
+          res.json({ empleado: row });
+      }
+  });
+  db.close();
+});
+
+
+
 module.exports = router;

@@ -29,13 +29,16 @@ function cargarEmpleados() {
             const empleados = response.empleados;
             let tablaEmpleados = '';
             empleados.forEach(function(empleado) {
-                tablaEmpleados += `<tr>
-                                    <td>${empleado.id}</td>
-                                    <td>${empleado.nombre}</td>
-                                    <td>${empleado.puesto}</td>
-                                    <td>${empleado.email}</td>
-                                    <td><button class="eliminar-empleado" data-id="${empleado.id}">Eliminar</button></td>
-                                  </tr>`;
+                tablaEmpleados += `<tr class="bg-white border-b hover:bg-gray-100">
+                        <td class="px-4 py-2 text-gray-800">${empleado.id}</td>
+                        <td class="px-4 py-2 text-gray-800">${empleado.nombre}</td>
+                        <td class="px-4 py-2 text-gray-800">${empleado.puesto}</td>
+                        <td class="px-4 py-2 text-gray-800">${empleado.email}</td>
+                        <td class="px-4 py-2 text-gray-800">
+                          <button class="editar-empleado bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" data-id="${empleado.id}">Editar</button>
+                          <button class="eliminar-empleado bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" data-id="${empleado.id}">Eliminar</button>
+                        </td>
+                    </tr>`;
             });
             $('table tbody').html(tablaEmpleados);
         },
@@ -44,6 +47,7 @@ function cargarEmpleados() {
             toastr.error('Error al cargar los empleados.');
         }
     });
+
 }
 
 function guardarEmpleado(empleado) {
@@ -81,3 +85,23 @@ function eliminarEmpleado(id) {
         }
     });
 }
+
+
+$(document).on('click', '.editar-empleado', function() {
+    const empleadoId = $(this).data('id');
+    $.ajax({
+        url: `/empleadosv2/api/${empleadoId}`, // Asegúrate de tener esta ruta en el servidor para obtener los datos del empleado
+        type: 'GET',
+        success: function(response) {
+            const empleado = response.empleado;
+            $('#id').val(empleado.id); // Asegura que el campo 'id' se utilice para identificar la actualización
+            $('#nombre').val(empleado.nombre);
+            $('#puesto').val(empleado.puesto);
+            $('#email').val(empleado.email);
+        },
+        error: function(error) {
+            console.error("Error al obtener el empleado:", error);
+            toastr.error('Error al cargar los datos del empleado para edición.');
+        }
+    });
+});
