@@ -29,7 +29,7 @@ const checkToken = (req,res,next) => {
     }
 
     req.userId =  payload.userId;
-    req.rolId = payload.rolId;
+    req.rol = payload.rol;
 
     next();
 

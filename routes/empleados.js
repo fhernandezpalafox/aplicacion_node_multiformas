@@ -34,6 +34,8 @@ router.get('/', (req, res) => {
   db.close();
 });
 
+
+
 // Ruta para añadir o actualizar un empleado
 router.post('/save', (req, res) => {
   const { id, nombre, puesto, email } = req.body;

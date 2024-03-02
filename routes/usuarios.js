@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jwt-simple');
+
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./db/empleadosDB.sqlite');
 
@@ -11,7 +12,7 @@ const db = new sqlite3.Database('./db/empleadosDB.sqlite');
 
 // Crear usuario
 router.post('/usuario', async (req, res) => {
-  console.log(req.body);
+  //console.log(req.body);
 
   const { nombre, rol, password } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);

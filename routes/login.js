@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
+
 const bcrypt = require('bcrypt');
 const jwt = require('jwt-simple');
 const moment =  require('moment');
+
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./db/empleadosDB.sqlite');
 

@@ -78,8 +78,8 @@
 
             access_token = JSON.parse(localStorage.getItem('token'));
         }
-        //Peticion http
-        axios.post('./empleados/apiVerificaToken', {}, {
+        //Peticion http <%= empleadoSeleccionado.id || '' %>
+        axios.post(($('input[name="id"]').val() == '')?'./empleados/apiVerificaToken':'../../empleados/apiVerificaToken', {}, {
             headers: {
                 'user_token': `${access_token.succesfull}`
             }

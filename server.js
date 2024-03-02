@@ -5,7 +5,8 @@ const port = 3000;
 
 // Configuración de bodyParser para analizar el cuerpo de las solicitudes POST
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public')); // Para servir archivos estáticos
+app.use(express.static('public'));// Para servir archivos estáticos
+
 app.use(express.json());
 
 
@@ -34,9 +35,6 @@ app.get('/', (req, res) => { //request, response
 app.get('/empleadosv2', (req, res) => {
   res.render('empleadosv2');
 });
-
-
-
 
 
 
